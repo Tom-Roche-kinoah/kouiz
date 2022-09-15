@@ -1,0 +1,90 @@
+<%- include('partials/header') %>
+
+
+    <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '>';">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/admin/users">Tous les utilisateurs</a></li>
+            <li class="breadcrumb-item active" aria-current="page">profil de <%= userProfile.firstname %> <%= userProfile.lastname  %></li>
+        </ol>
+    </nav>
+
+
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img class="rounded-circle mt-5" width="150px" 
+                    src="<% if(userProfile.photo) { %><%= userProfile.photo  %><% } else { %>/img/default-profile-picture.png<% } %>">
+                    
+                    <span class="font-weight-bold h3"><%= userProfile.firstname %> <%= userProfile.lastname  %></span>
+                    <span class="text-black-50"><%= userProfile.email %></span>
+                </div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h1 class="text-right">Profil</h1>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label class="labels">Prénom</label>
+                            <input type="text" class="form-control" value="<%= userProfile.firstname %>">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="labels">Nom</label>
+                            <input type="text" class="form-control" value="<%= userProfile.lastname  %>">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label class="labels">E-mail</label>
+                            <input type="text" class="form-control" value="<%= userProfile.email  %>">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <h5>Modifier le mot de passe</h5>
+                        <div class="col-md-6">
+                            <label class="labels">Mot de passe</label>
+                            <input type="password" class="form-control" value="">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="labels">vérification</label>
+                            <input type="password" class="form-control" value="">
+                        </div>
+                    </div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Sauvegarder les changements</button></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center experience mb-4">
+                        <h5>Statistiques</h5>
+                    </div>
+                    <div>
+                        <p>Compte crée le : <strong><%= userProfile.created_at  %></strong></p>
+                        <p>Rôle : <strong><%= userProfile.role  %></strong></p>
+                        <p>Nombre de quiz crées : 
+                            <% if (userProfile.quiz_list.length > 0) { %>
+                                <strong><%= userProfile.quiz_list.length %></strong>
+                                
+                                <ul>
+                                    <% for( const quiz of userProfile.quiz_list ) { %>
+                                        <li><a href="/quiz/<%= quiz.id %>"><%= quiz.title %></a></li>
+                                    <% } %> 
+                                </ul>
+                            <% } else { %>
+                                aucun
+                            <% } %>
+                        </p>
+                        
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<%- include('partials/footer') %>

@@ -1,0 +1,43 @@
+<%- include('partials/header') %>
+
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <h2 class="h1 display-4"><%= tag.name %></h2>
+        </div>
+
+        <!-- <%= JSON.stringify(quiz) %> -->
+
+        <div class="card-deck row mb-3 text-center">
+
+
+        <% for( oneQuiz of quiz ) { %>
+                <div class="col-4 d-flex flex-column">
+                    <div class="card mb-4 shadow-sm d-flex flex-column">
+                        <div class="card-header">
+                            <h3 class="h5 my-0 font-weight-normal"><%= oneQuiz.title %></h3>
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <h4 class="h3 card-title pricing-card-title"><%= oneQuiz.description %></h4>
+                            <p>par <strong>
+                                <a href="/author/<%= oneQuiz.author.id %>"><%= oneQuiz.author.firstname %> <%= oneQuiz.author.lastname %></a>
+                            </strong></p>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <% for( let tag of oneQuiz.taglist ) { %>
+                                    <li>
+                                        <a href="/category/<%= tag.id %>" class="tag--<%= tag.name.toLowerCase() %>">
+                                            <%= tag.name %>
+                                        </a>
+                                    </li>
+                                <% } %>
+                            </ul>
+                            <a href="/quiz/<%= oneQuiz.id %>" class="btn btn-lg btn-block btn-primary text-white">Jouer</a>
+                        </div>
+                    </div>
+                </div>
+        <% } %>
+
+            
+
+
+        </div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,244 @@
+:root {
+  --main-color: deeppink;
+}
+body {
+    padding-top: 5rem;
+}
+
+.btn-primary, .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle, .btn-primary.focus, .btn-primary:focus {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+  }
+  
+  .btn-primary:hover {
+    background-color: rgb(199, 0, 199);
+    border-color: rgb(151, 0, 151);
+  }
+  
+  .bg-primary {
+    background-color: var(--main-color)!important;
+  }
+  
+  .form-signin {
+    width: 100%;
+    max-width: 420px;
+    padding: 15px;
+    margin: auto;
+  }
+  
+  .form-signin {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px;
+    margin: auto;
+  }
+  
+
+  p[class^="level--"] {
+    padding:0.5rem 1rem;
+    float: right;
+  }
+
+  .level--beginner,
+  .level--débutant {
+    color: #28a745;
+  }
+  
+  .level--medium,
+  .level--confirmé {
+    color: #ffc107;
+  }
+  
+  .level--expert {
+    color: #dc3545;
+  }
+  
+  
+
+  a[class^="tag--"] {
+    display: inline-block;
+    padding: .1em 1em;
+    border-radius: 50px;
+    color:black!important;
+    font-size: .8rem;
+    text-decoration: none;
+  }
+  a[class^="tag--"]:hover {
+    text-decoration: underline;
+  }
+ 
+  .tag--cinéma {
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+  }
+  
+  .tag--technologie {
+    color: #383d41;
+    background-color: #e2e3e5;
+    border-color: #d6d8db;
+  }
+  
+  .tag--gastronomie {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+  }
+  
+  .tag--littérature {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+  }
+  
+  .tag--histoire {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+  }
+  
+  .tag--animaux {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+  }
+  
+  .tag--nature {
+    color: #523e02;
+    background-color: #d3c493;
+    border-color: #c9b579;
+  }
+  
+  .tag--astronomie {
+    color: #1b1e21;
+    background-color: #d6d8d9;
+    border-color: #c6c8ca;
+  }
+  
+  .tag--géographie {
+    color: #0c3b17;
+    background-color: #86a78e;
+    border-color: #889e8d;
+  }
+
+
+
+  a {
+    color: inherit;
+  }
+  a:hover {
+    color: inherit;
+  }
+
+  header {
+      color:white;
+  }
+  .navbar-nav {
+      margin-left: auto;
+      gap: .5rem;
+  }
+.nav-link {
+  color: white; 
+  border-radius: 5px; 
+}
+  .nav-link.active {
+      background-color: white;
+      color: var(--main-color);
+  }
+    .nav-link:hover {
+        background-color: rgba(255,255,255,.2);
+        color: white; 
+    }
+    .nav-link:focus, .nav-link:hover {
+      color: white;
+  }
+
+  .logo {
+      font-weight: bold;
+      font-size: 2rem;
+      text-shadow: 0 3px 0px rgb(0 0 0 / 50%);
+  }
+
+  .admin-users {
+    width:100%;
+  }
+  .admin-users td,
+  .admin-users th  {
+    text-align: start;
+    padding: .2rem 1rem;
+    border-bottom: solid 1px grey;
+  }
+  .admin-users td:last-child,
+  .admin-users th:last-child {
+    text-align: end;
+  }
+
+.question-list {
+  list-style-type: none;
+}
+.question-title button {
+    font-weight: 500;
+}
+.question-title button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 100%;
+  text-align: start;
+}
+.answer-list {
+  list-style-type: none;
+}
+.answer:has(:checked) {
+  color:var(--main-color);
+}
+.good-answer {
+  display:none
+}
+
+.form-check-input:checked {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+}
+
+
+/* Accordeon */
+.accordion-button:not(.collapsed){
+    color: #000;
+    background-color: #eee;
+    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+}
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+
+.breadcrumb {
+  background-color: rgb(230, 230, 230);
+  font-size: .8rem;
+  border-radius: 0.25rem;
+  padding:0 .5rem
+}
+.breadcrumb li{
+  padding: .5rem .2rem;
+}
+
+
+.error .form-control {
+  border-color:red;
+}
+
+.error span.alert {
+  color:red;
+  font-size: .7rem;
+  font-style: italic;
+  padding: 0 .5em
+}
+
+/* .accordion-button::after {
+    background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e);
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e);
+} */

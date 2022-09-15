@@ -1,0 +1,37 @@
+<%- include('partials/header') %>
+
+        <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '>';">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="/admin/questions">Toutes les questions</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Question #<%= question.id %></li>
+            </ol>
+        </nav>
+
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <h2 class="h1 display-4">Question #<%= question.id %></h2>
+
+            <div>
+                <table class="text-left admin-users">
+                    <tr>
+                        <th>id</th>
+                        <th>question</th>
+                        <th>level</th>
+                    </tr>
+
+                        <tr>
+                            <td><%= question.id %></td>
+                            <td>
+                                <%= question.question %>
+                                <br>
+                                réponse : <%= question.good_answer.description %>
+                            </td>
+                            <td><%= question.level.name %></td>
+                        </tr>
+
+                </table>
+            </div>
+
+        </div>
+
+<%- include('partials/footer') %>

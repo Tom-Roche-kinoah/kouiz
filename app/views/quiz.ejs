@@ -1,0 +1,67 @@
+<%- include('partials/header') %>
+
+        
+
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <h2 class="h1 display-4"><%= quiz.title %></h2>
+            <p>par <a href="/author/<%= quiz.author.id %>"><%= quiz.author.fullName %> </a></p>
+            <p class="h3"><%= quiz.description %></p>
+            <p>
+                <% for( let tag of quiz.taglist ) { %>
+                    <a href="/category/<%= tag.id %>" class="tag--<%= tag.name.toLowerCase() %>"><%= tag.name %></a>
+                <% } %>
+            </p>
+            <h2 class="h5">Répondez à <%= quiz.questions.length  %> Questions</h2>
+            <% if(!user) { %>
+                <h4><a href="/login">Connectez-vous pour jouer</a></h4>
+            <% } %>
+        </div>
+
+        <form class="px-3 py-3 pt-md-5 pb-md-4 mx-auto " method="POST" action="/quiz/<%= quiz.id %>">
+            <div class="question-list accordion">
+
+                <% let questionNumber = 0 %>
+                <% for( let question of quiz.questions ) { %>
+                    <!-- une question -->
+                    <% questionNumber++ %>
+
+                    <div class="accordion-item question card mb-4 shadow-sm <%= question.level.name.toLowerCase() %>" id="question-<%= questionNumber %>">
+                        <h2 class="h5 question-title" id="panelsStayOpen-heading<%= questionNumber %>">
+                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%= questionNumber %>" aria-expanded="true" aria-controls="panelsStayOpen-collapse<%= questionNumber %>">
+                            <%= question.question %>
+                          </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapse<%= questionNumber %>" class="accordion-collapse collapse<% if (questionNumber === 1) { %> show<% } %>" aria-labelledby="panelsStayOpen-heading<%= questionNumber %>">
+                          <div class="accordion-body">
+                                <p class="level--<%= question.level.name.toLowerCase() %>"><%= question.level.name %></p>
+                                
+                                <% if(user) { %>
+                                <!-- réponses seulement si connecté -->
+                                <ul class="answer-list card-body">
+                                <% for( let answer of question.answers ) { %>
+                                    <!-- une reponse -->
+                                    <li class="answer form-check">
+                                        <label class="form-check-label">
+                                        <input type="radio" name="<%= question.id %>" value="<%= answer.id %>" class="form-check-input">
+                                            <%= answer.description %>
+                                        </label>
+                                    </li>
+                                    <!-- fin de reponse -->
+                                <% } %>
+                                    <!-- A supprimer ! -->
+                                    <li class="good-answer">✅ <strong><%= question.good_answer.description %></strong></li>
+                                </ul>
+                                <% } %>
+
+                          </div>
+                        </div>
+                    </div>
+                    <!-- fin de la question -->
+                <% } %>
+            </div>
+            <% if(user) { %>
+                <button class="btn btn-primary btn-lg">Valider mes réponses</button>
+            <% } %>
+        </form>
+
+<%- include('partials/footer') %>

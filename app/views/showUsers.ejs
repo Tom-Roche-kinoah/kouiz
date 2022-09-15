@@ -1,0 +1,42 @@
+<%- include('partials/header') %>
+
+        <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '>';">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active">Tous les utilisateurs</li>
+            </ol>
+        </nav>
+
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <h2 class="h1 display-4">ADMIN : tous les users</h2>
+
+            <div>
+                <table class="text-left admin-users">
+                    <tr>
+                        <th>id</th>
+                        <th>prénom</th>
+                        <th>nom</th>
+                        <th>email</th>
+                        <th>rôle</th>
+                        <th>profil</th>
+                        <th>supprimer</th>
+                    </tr>
+                    <% for( let user of users ) { %>
+
+                        <tr>
+                            <td><%= user.id %></td>
+                            <td><%= user.firstname %></td>
+                            <td><%= user.lastname %></td>
+                            <td><%= user.email %></td>
+                            <td class="role-<%= user.role %>"><%= user.role %></td>
+                            <td><a href="/admin/profile/<%= user.id %>" class="danger">voir le profil</a></td>
+                            <td><a href="/admin/destroyUser/<%= user.id %>" class="danger">supprimer</a></td>
+                        </tr>
+
+                    <% } %>
+                </table>
+            </div>
+
+        </div>
+
+<%- include('partials/footer') %>

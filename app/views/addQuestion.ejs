@@ -1,0 +1,59 @@
+<%- include('partials/header') %>
+
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h2 class="h1 display-4">Ajouter une question</h2>
+    </div>
+
+    <form method="POST" action="/add-question" class="card col-lg-8 offset-lg-2 shadow-sm mb-5">
+        <div class="card-body">
+            <h4>Nouvelle question</h4>
+            <div class="mb-3">
+                <label for="question" class="form-label">Question</label>
+                <input type="question" class="form-control" name="question" id="question" placeholder="Quelle est la couleur du cheval blanc d'Henri IV ?">
+            </div>
+
+            <div class="mb-3">
+                <label for="answer" class="form-label">Réponse</label>
+                <input type="answer" class="form-control" name="answer" id="answer" placeholder="Gris">
+            </div>
+
+            <div class="mb-3">
+                <label for="level_id" class="form-label">Niveau de difficulté</label>
+                <select class="form-select" name="level_id" id="level_id">
+                    <% for( const level of levels ) { %>
+                        <option value="<%= level.id %>"><%= level.name %></option>
+                    <% } %>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="quiz_id" class="form-label">Quiz</label>
+                <select class="form-select" name="quiz_id" id="quiz_id">
+                    <% for( const quiz of quizList ) { %>
+                        <option value="<%= quiz.id %>"><%= quiz.title %></option>
+                    <% } %>
+                </select>
+            </div>
+
+            <hr>
+            <h4>Facultatif</h4>
+            <div class="mb-3">
+                <label for="anecdote" class="form-label">Anecdote</label>
+                <textarea type="anecdote" class="form-control" name="anecdote" id="anecdote" placeholder="La couleur blanche n'existe quasiment pas dans la race chevaline. Même si la robe d'un cheval est couleur de neige immaculée, il faut dire qu'elle est grise. Le cheval blanc d'Henri IV était donc gris !"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="wiki" class="form-label">Wiki</label>
+                <input type="wiki" class="form-control" name="wiki" id="wiki" placeholder="https://www.franceculture.fr/wiki/henri-iv">
+            </div>
+
+
+
+            <button type="submit" class="btn btn-primary">Sauvegarder cette question</button>
+
+        </div>
+    </form>
+
+
+
+<%- include('partials/footer') %>
